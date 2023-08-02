@@ -1,0 +1,77 @@
+@import "../../assets/variables.module.scss";
+
+.input {
+  background: white;
+  width: 320px;
+  height: 30px;
+  padding: 7px;
+  padding-left: 34px;
+  border: none;
+  outline: none;
+  border-radius: 6px;
+  border: 1px solid rgb(206, 206, 206);
+}
+.input::placeholder {
+  color: rgb(194, 194, 194);
+  font-family: "Readex Pro";
+}
+.button {
+  background: none;
+  position: absolute;
+  border: none;
+  top: 15px;
+  left: 5px;
+}
+.inputBlock {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.searchIcon {
+  width: 15px;
+  height: 17px;
+}
+.input:focus {
+  border: 1.5px solid $PALE_ORANGE;
+}
+
+@media screen and (max-width: 880px) {
+  .input {
+    width: 215px;
+  }
+  .searchIcon {
+    margin-top: -15px;
+    width: 13px;
+    height: 15px;
+  }
+}
+
+.inputHidden {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: $LIGHT_GRAY;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  .input {
+    display: none;
+  }
+}
+
+// @media (max-width: 720px) {
+//   .inputBlock {
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     width: 40px;
+//     height: 40px;
+//     border-radius: 50%;
+//     background-color: $LIGHT_GRAY;
+//     cursor: pointer;
+//   }
+//   .input {
+//     display: none;
+//   }
+// }

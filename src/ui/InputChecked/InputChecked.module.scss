@@ -1,0 +1,43 @@
+.inputBlock{
+    position: relative;
+}
+.input{
+    -webkit-appearance: none;
+    appearance: none;
+    position: absolute;
+}
+
+label span::before{
+    content: '';
+    background:url();
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background: white;
+   width: 16px;
+   height: 16px; 
+   border-radius: 3px;
+}
+
+label span::after {
+        content: "";
+        position: absolute;
+        top: 0px;
+        border-radius: 3px;
+        left: 0px;
+        z-index: 1;
+        background: #FF9900;
+        width: 16px;
+        height: 16px;
+        opacity: 0;
+}
+
+.input:checked +.labelChecked span:after{
+    opacity: 1;
+}
+.check{
+    position: absolute;
+    color:white;
+    z-index: 1000;
+}

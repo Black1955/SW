@@ -1,0 +1,14 @@
+@import "/src/assets/variables.module.scss";
+
+.amountOfPets {
+  color: $LIGHT_GRAY;
+}
+
+.petList {
+  display: flex;
+}
+@media screen and (max-width: 800px) {
+  .notHave {
+    font-size: 16px;
+  }
+}

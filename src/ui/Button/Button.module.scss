@@ -1,0 +1,69 @@
+@import "../../assets/variables.module.scss";
+
+.Button {
+  border-radius: 25px;
+  padding: 10px 15px;
+  color: $WHITE;
+  cursor: pointer;
+  background-color: $WHITE;
+  font-size: 15px;
+  font-family: "Readex Pro", sans-serif;
+}
+
+.Orange {
+  background-color: $YELLOW-ORANGE;
+  border: none;
+}
+.Black {
+  background-color: $JET;
+  border: none;
+}
+.BorderBlack {
+  color: $JET;
+  border: 1px solid $JET;
+}
+.BorderOrange {
+  color: $YELLOW-ORANGE;
+  border: 1px solid $YELLOW-ORANGE;
+}
+.Gray {
+  background-color: $BABY-POWDER;
+  border: none;
+  transition: all 0.5s;
+  border: none;
+  color: $JET;
+}
+.Gray:hover {
+  background-color: $WHITE;
+  color: red;
+}
+
+.Icon {
+  color: inherit;
+  background-color: none;
+  border: none;
+  background-color: transparent;
+  margin-bottom: 10px;
+}
+.WithoutBorder {
+  color: $PALE_ORANGE;
+  border: none;
+  background-color: none;
+}
+
+@media screen and (max-width: 980px) {
+  .icon {
+    svg {
+      width: 25px;
+      height: 25px;
+    }
+  }
+}
+@media screen and (max-width: 800px) {
+  .icon {
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}

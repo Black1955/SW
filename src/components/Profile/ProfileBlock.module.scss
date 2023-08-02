@@ -1,0 +1,133 @@
+@import "/src/assets/variables.module.scss";
+
+.profile {
+  margin-left: 0px;
+  margin-top: 18px;
+  padding: 20px 0px;
+  padding-top: 0px;
+  position: relative;
+  background-color: white;
+  border-radius: 15px;
+  .wrapper {
+    margin: 15px;
+  }
+  .background {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .profilePhoto {
+    position: absolute;
+    border: 4px solid white;
+    border-radius: 50%;
+    display: inline-block;
+    top: 100px;
+  }
+  .information {
+    margin: 35px 0px;
+    display: flex;
+    .nickName,
+    .name {
+      margin-bottom: 15px;
+    }
+    .nickName {
+      color: $DARK_GRAY;
+    }
+    .description {
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .followInformation {
+      margin-left: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .qwe {
+        margin-left: 0;
+      }
+      .follow {
+        margin-top: 20px;
+        display: flex;
+
+        .followSection {
+          margin-left: 10px;
+
+          text-align: center;
+          .numbers {
+            font-size: 25px;
+            font-weight: 600;
+            margin-bottom: 8px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.editBg {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  right: 70px;
+  bottom: 50px;
+}
+.editBg label {
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  border-radius: 0;
+  background: none;
+}
+
+@media screen and (max-width: 980px) {
+  .profile {
+    margin-left: 10px;
+  }
+}
+@media screen and (max-width: 800px) {
+  .infoFollow {
+    font-size: 14px;
+  }
+  .profile {
+    .profilePhoto {
+      top: 130px;
+      width: 70px;
+      height: 70px;
+      img {
+        width: 70px;
+        height: 70px;
+      }
+    }
+    .information {
+      .nickName,
+      .name {
+        margin-bottom: 10px;
+      }
+      .description {
+        font-size: 0.8rem;
+      }
+      h2 {
+        font-size: 20px;
+      }
+      .followInformation {
+        button {
+          padding: 5px 10px;
+        }
+        .follow {
+          .followSection {
+            .numbers {
+              font-size: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
