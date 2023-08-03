@@ -21,7 +21,7 @@ const Login: FC<ILogin> = () => {
     if (data?.access) {
       navigation("/");
     }
-  }, [data]);
+  }, [data, navigation]);
 
   return (
     <div className={styles.content}>

@@ -88,7 +88,7 @@ const CreatePost: FC<ICreatePost> = ({ file }) => {
             <div className={styles.photo}>
               {image ? (
                 <>
-                  <img src={photo?.toString()} alt='image' />
+                  <img src={photo?.toString()} alt='oleg' />
                   <div className={styles.cross} onClick={() => setImage(null)}>
                     <GrClose />
                   </div>

@@ -63,7 +63,7 @@ const ProfileBlock: FC<IProfile> = ({
           backgroundImage: `url(${back})`,
         }}
       >
-        {isShow && myId == id && (
+        {isShow && myId === id && (
           <div className={styles.editBg}>
             <AddBlog id='5' type='file' onChange={e => ChangeFiles(e)}>
               <div className={`${ButtonStyles.Button} ${ButtonStyles.Orange}`}>
@@ -93,7 +93,7 @@ const ProfileBlock: FC<IProfile> = ({
             <div className={styles.description}>{description}</div>
           </div>
           <div className={styles.followInformation}>
-            {id == myId ? (
+            {id === myId ? (
               <Button
                 variant='BorderBlack'
                 icon={<TbSettings />}
