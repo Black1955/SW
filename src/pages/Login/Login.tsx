@@ -4,7 +4,7 @@ import { ILogin, YourFormElement } from "./ILogin";
 import logo from "../../assets/logo.png";
 import InputPassword from "../../ui/InputPassword/InputPassword";
 import Input from "../../ui/Input/Input";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useSigninMutation } from "../../services/user";
 const Login: FC<ILogin> = () => {
   const navigation = useNavigate();
@@ -73,7 +73,10 @@ const Login: FC<ILogin> = () => {
               Agree & Join{" "}
             </button>
             <p className={styles.signUp}>
-              Already on Fluffy's? <span>Sing up</span>
+              Already on Fluffy's?{" "}
+              <Link to={"/signup"}>
+                <span>Sing up</span>
+              </Link>
             </p>
           </div>
         </form>

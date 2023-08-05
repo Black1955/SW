@@ -4,7 +4,7 @@ import logo from "../../assets/logo.png";
 import InputPassword from "../../ui/InputPassword/InputPassword";
 import Input from "../../ui/Input/Input";
 import { useSignupMutation } from "../../services/user";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { YourFormElement } from "./signup";
 const SignUpForm: FC = () => {
   const [signup, { isLoading, data }] = useSignupMutation();
@@ -71,7 +71,10 @@ const SignUpForm: FC = () => {
           </p>
           <button className={styles.formBtn}>Agree & Join </button>
           <p className={styles.signUp}>
-            Already on Fluffy's? <span>Login</span>
+            Already on Fluffy's?{" "}
+            <Link to={"/signin"}>
+              <span>Login</span>
+            </Link>
           </p>
         </div>
       </form>
