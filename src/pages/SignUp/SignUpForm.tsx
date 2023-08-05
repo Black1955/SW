@@ -20,6 +20,7 @@ const SignUpForm: FC = () => {
 
   useEffect(() => {
     if (data?.access) {
+      localStorage.setItem("token", data.token);
       navigate("/");
     }
   }, [data, navigate]);

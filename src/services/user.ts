@@ -8,6 +8,7 @@ import {
   res,
   IsearchRes,
   IUpdateProfile,
+  IRefreshUser,
 } from "./users_types";
 
 const apiWithTag = API.enhanceEndpoints({ addTagTypes: ["user"] });
@@ -28,7 +29,7 @@ export const userAPI = apiWithTag.injectEndpoints({
         body: args,
       }),
     }),
-    refresh: build.query<IUser, Error>({
+    refresh: build.query<IRefreshUser, Error>({
       query: () => "/refresh",
     }),
     getUser: build.query({
@@ -90,4 +91,5 @@ export const {
   useFindUserQuery,
   useUpdateProfileMutation,
   useUpdatePhotoMutation,
+  useLazyRefreshQuery,
 } = userAPI;

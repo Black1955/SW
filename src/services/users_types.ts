@@ -1,5 +1,6 @@
 export interface res {
   access: boolean;
+  token: string;
 }
 export interface query {
   email: string;
@@ -16,6 +17,12 @@ export interface IUser {
   back_url: string;
   email: string;
 }
+
+export interface IRefreshUser {
+  user: IUser;
+  token: string;
+}
+
 export interface Error {}
 export interface query1 extends query {
   nickname: string;

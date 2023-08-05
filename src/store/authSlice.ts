@@ -37,7 +37,8 @@ export const authSlice = createSlice({
     builder.addMatcher(
       userAPI.endpoints.refresh.matchFulfilled,
       (state, payload) => {
-        state.user = payload.payload;
+        localStorage.setItem("token", payload.payload.token);
+        state.user = payload.payload.user;
       }
     );
   },

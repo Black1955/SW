@@ -60,10 +60,10 @@ export const ModalSlice = createSlice({
       userAPI.endpoints.refresh.matchFulfilled,
       (state, payload) => {
         state.editModal = {
-          avatar: payload.payload.avatar_url,
-          background: payload.payload.back_url,
-          description: payload.payload.description,
-          name: payload.payload.name,
+          avatar: payload.payload.user.avatar_url,
+          background: payload.payload.user.back_url,
+          description: payload.payload.user.description,
+          name: payload.payload.user.name,
         };
       }
     );

@@ -19,6 +19,7 @@ const Login: FC<ILogin> = () => {
 
   useEffect(() => {
     if (data?.access) {
+      localStorage.setItem("token", data.token);
       navigation("/");
     }
   }, [data, navigation]);

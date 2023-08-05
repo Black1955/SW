@@ -3,19 +3,25 @@ import { Outlet, useNavigate } from "react-router-dom";
 import LinksBar from "../LinksBar/LinksBar";
 import Header from "../Header/Header";
 import styles from "./Layout.module.scss";
-import { useRefreshQuery } from "../../services/user";
+import { useLazyRefreshQuery } from "../../services/user";
 const Layout = () => {
   const navigate = useNavigate();
-  const { isLoading, error, data } = useRefreshQuery({});
-
+  const [request, { isLoading, data, error, isFetching }] =
+    useLazyRefreshQuery();
   useEffect(() => {
-    if (error) {
-      //@ts-ignore
+    if (localStorage.getItem("token")) {
+      request({});
+    }
+  }, [request]);
+  useEffect(() => {
+    //@ts-ignore
+    if (error || !localStorage.getItem("token")) {
+      console.log(error);
       navigate("/signin");
     }
   }, [error, navigate]);
 
-  if (isLoading) {
+  if (isLoading && isFetching) {
     return <h1>Loading...</h1>;
   }
 
