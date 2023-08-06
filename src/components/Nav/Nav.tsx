@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styles from "./Nav.module.scss";
 import { FaTelegramPlane } from "react-icons/fa";
 import { AiFillBell } from "react-icons/ai";
@@ -8,9 +8,6 @@ import { useAppSelector } from "../../hooks/useAppSelect/useAppSelector";
 import { addHostName } from "../../helpFunctions/addHostname";
 const Nav = () => {
   const { id, avatar_url } = useAppSelector(state => state.auth.user!);
-  useEffect(() => {
-    console.log(id, avatar_url);
-  }, [id, avatar_url]);
   const [show, setShow] = useState<boolean>(false);
   return (
     <nav className={styles.nav}>

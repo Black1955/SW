@@ -47,7 +47,7 @@ const Posts: FC<IPosts> = ({ tabs, id }) => {
   useEffect(() => {
     setPost([]);
     setPage(0);
-  }, [valueTab]);
+  }, [valueTab, id]);
   const { data: posts, isLoading } = useGetPostsQuery({
     id,
     limit: "5",
@@ -60,7 +60,7 @@ const Posts: FC<IPosts> = ({ tabs, id }) => {
     if (post && isVisible) {
       setPage(last => (last += posts?.length!));
     }
-  }, [isVisible, post, posts?.length]);
+  }, [isVisible]);
 
   useEffect(() => {
     if (posts) {

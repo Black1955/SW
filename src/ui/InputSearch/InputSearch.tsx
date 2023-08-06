@@ -29,7 +29,6 @@ const InputSearch: FC<IInputSearch> = ({ ...rest }) => {
     setIsInputVisible(true);
   };
   const handleClick = () => {
-    console.log("wd");
     if (windowWidth > 720) {
       return;
     }
