@@ -14,7 +14,7 @@ const FindUser = () => {
   const [data, setData] = useState<oleg[]>();
   const debounceValue = useDebounce(value, 400);
   const findUser = async (value: string) => {
-    await fetch(`${process.env.REACT_APP_URL}/search?query=${value}`, {
+    await fetch(`${process.env.REACT_APP_URL}search?query=${value}`, {
       headers: {
         authorization: localStorage.getItem("token")!,
       },
