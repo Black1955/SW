@@ -32,7 +32,7 @@ const ProfileBlock: FC<IProfile> = ({
 }) => {
   const dispatch = useDispatch();
   const [isShow, setShow] = useState<boolean>(false);
-  const { id: myId } = useAppSelector(state => state.auth.user!);
+  const { policy, signature, user } = useAppSelector(state => state.auth);
   const [subscribe] = useSubscribeMutation();
   const [unSubscribe] = useUnSubscribeMutation();
   const folow = async (followed: boolean) => {
@@ -42,9 +42,10 @@ const ProfileBlock: FC<IProfile> = ({
       await subscribe(id);
     }
   };
-  const back = back_url
-    ? process.env.REACT_APP_URL + "/" + back_url.replace(/\\/g, "/")
-    : background;
+  const back =
+    back_url && back_url.length
+      ? addHostName(back_url, policy!, signature!)
+      : background;
 
   const [file, setFile] = useState<File>();
   const ChangeFiles = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -63,7 +64,7 @@ const ProfileBlock: FC<IProfile> = ({
           backgroundImage: `url(${back})`,
         }}
       >
-        {isShow && myId === id && (
+        {isShow && user?.id === id && (
           <div className={styles.editBg}>
             <AddBlog id='5' type='file' onChange={e => ChangeFiles(e)}>
               <div className={`${ButtonStyles.Button} ${ButtonStyles.Orange}`}>
@@ -77,7 +78,7 @@ const ProfileBlock: FC<IProfile> = ({
       <div className={styles.wrapper}>
         <div className={styles.profilePhoto}>
           <Avatar
-            url={addHostName(avatar_url)}
+            url={addHostName(avatar_url, policy!, signature!)}
             height={100}
             width={100}
             userId={id}
@@ -93,7 +94,7 @@ const ProfileBlock: FC<IProfile> = ({
             <div className={styles.description}>{description}</div>
           </div>
           <div className={styles.followInformation}>
-            {id === myId ? (
+            {id === user?.id ? (
               <Button
                 variant='BorderBlack'
                 icon={<TbSettings />}

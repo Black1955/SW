@@ -5,10 +5,14 @@ import { userAPI } from "../services/user";
 interface IInitialState {
   access: boolean;
   user: IUser | null;
+  policy: string | null;
+  signature: string | null;
 }
 const initialState: IInitialState = {
   access: false,
   user: null,
+  policy: null,
+  signature: null,
 };
 
 export const authSlice = createSlice({
@@ -39,6 +43,8 @@ export const authSlice = createSlice({
       (state, payload) => {
         localStorage.setItem("token", payload.payload.token);
         state.user = payload.payload.user;
+        state.policy = payload.payload.policy;
+        state.signature = payload.payload.signature;
       }
     );
   },

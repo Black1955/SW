@@ -21,6 +21,7 @@ const EditProfile = () => {
     description: defaultDesc,
     name: defaultName,
   } = useAppSelector(state => state.auth.user!);
+  const { policy, signature } = useAppSelector(state => state.auth);
   const [update] = useUpdateProfileMutation();
   const { name, description } = editModal!;
   const [avatar, setAva] = useState<File>();
@@ -76,7 +77,7 @@ const EditProfile = () => {
                 url={
                   avatarPicture
                     ? avatarPicture.toString()
-                    : addHostName(avatar_url)
+                    : addHostName(avatar_url, policy!, signature!)
                 }
                 userId={10}
               />
@@ -97,7 +98,9 @@ const EditProfile = () => {
               <div className={styles.back_picture}>
                 <img
                   src={
-                    backPicture ? backPicture.toString() : addHostName(back_url)
+                    backPicture
+                      ? backPicture.toString()
+                      : addHostName(back_url, policy!, signature!)
                   }
                   alt='qwe'
                 />

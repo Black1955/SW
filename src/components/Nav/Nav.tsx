@@ -8,6 +8,7 @@ import { useAppSelector } from "../../hooks/useAppSelect/useAppSelector";
 import { addHostName } from "../../helpFunctions/addHostname";
 const Nav = () => {
   const { id, avatar_url } = useAppSelector(state => state.auth.user!);
+  const { policy, signature } = useAppSelector(state => state.auth);
   const [show, setShow] = useState<boolean>(false);
   return (
     <nav className={styles.nav}>
@@ -25,7 +26,7 @@ const Nav = () => {
         </div>
         <div className={styles.avatar}>
           <Avatar
-            url={addHostName(avatar_url)}
+            url={addHostName(avatar_url, policy!, signature!)}
             width={40}
             height={40}
             userId={id}

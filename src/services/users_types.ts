@@ -21,6 +21,8 @@ export interface IUser {
 export interface IRefreshUser {
   user: IUser;
   token: string;
+  signature: string;
+  policy: string;
 }
 
 export interface Error {}

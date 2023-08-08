@@ -4,6 +4,7 @@ import styles from "./RecommendedBlog.module.scss";
 import { GrFormClose } from "react-icons/gr";
 import Avatar from "../Avatar/Avatar";
 import { addHostName } from "../../helpFunctions/addHostname";
+import { useAppSelector } from "../../hooks/useAppSelect/useAppSelector";
 
 const RecommendedBlog: FC<IReCommended> = ({
   nickname,
@@ -11,6 +12,7 @@ const RecommendedBlog: FC<IReCommended> = ({
   description,
   avatar_url,
 }) => {
+  const { policy, signature } = useAppSelector(state => state.auth);
   return (
     <div className={styles.blog}>
       <div className={styles.blogWrapper}>
@@ -18,7 +20,7 @@ const RecommendedBlog: FC<IReCommended> = ({
           <Avatar
             width={45}
             height={45}
-            url={addHostName(avatar_url)}
+            url={addHostName(avatar_url, policy!, signature!)}
             userId={id}
           />
           <div className={styles.text}>

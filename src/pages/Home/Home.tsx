@@ -10,6 +10,7 @@ import { useRecomendUserQuery } from "../../services/user";
 import ProfileList from "../../components/ProfileList/ProfileList";
 const Home: FC = () => {
   const { avatar_url, id } = useAppSelector(state => state.auth.user!);
+  const { policy, signature } = useAppSelector(state => state.auth);
   const { data, isLoading } = useRecomendUserQuery(id);
   const tabs = [
     {
@@ -40,7 +41,7 @@ const Home: FC = () => {
             <Avatar
               width={70}
               height={70}
-              url={addHostName(avatar_url)}
+              url={addHostName(avatar_url, policy!, signature!)}
               userId={id}
             />
           </div>
