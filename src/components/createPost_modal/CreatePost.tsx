@@ -12,11 +12,12 @@ import { useAppSelector } from "../../hooks/useAppSelect/useAppSelector";
 import { useFoto } from "../../hooks/useFoto/useFoto";
 import { ICreatePost } from "./CreatePost_type";
 import { useCreatePostMutation } from "../../services/post";
+import Loading from "../../ui/Loading/Loading";
 const CreatePost: FC<ICreatePost> = ({ file }) => {
   const { IsPostModal } = useAppSelector(state => state.modal);
   const [title, setTitle] = useState<string>();
   const [image, setImage] = useState<File | null>(file);
-  const [createPost] = useCreatePostMutation();
+  const [createPost, { isLoading }] = useCreatePostMutation();
   useEffect(() => {
     setImage(file);
   }, [file]);
@@ -127,6 +128,7 @@ const CreatePost: FC<ICreatePost> = ({ file }) => {
             </Button>
           </div>
         </form>
+        {isLoading && <Loading>Loading...</Loading>}
       </div>
     </ModalWrapper>
   );

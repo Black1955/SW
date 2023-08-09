@@ -6,6 +6,7 @@ import InputPassword from "../../ui/InputPassword/InputPassword";
 import Input from "../../ui/Input/Input";
 import { useNavigate, Link } from "react-router-dom";
 import { useSigninMutation } from "../../services/user";
+import Loading from "../../ui/Loading/Loading";
 const Login: FC<ILogin> = () => {
   const navigation = useNavigate();
   const [signin, { data, isLoading }] = useSigninMutation();
@@ -27,7 +28,7 @@ const Login: FC<ILogin> = () => {
   return (
     <div className={styles.content}>
       {isLoading ? (
-        <h1>oleg</h1>
+        <Loading>loading...</Loading>
       ) : (
         <form
           className={styles.login}

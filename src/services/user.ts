@@ -42,6 +42,7 @@ export const userAPI = apiWithTag.injectEndpoints({
       query: id => ({
         url: `/recomenduser/${id}`,
       }),
+      providesTags: ["user"],
     }),
     subscribe: build.mutation({
       query: (id: number | string) => ({

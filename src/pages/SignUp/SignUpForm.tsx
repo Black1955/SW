@@ -6,6 +6,7 @@ import Input from "../../ui/Input/Input";
 import { useSignupMutation } from "../../services/user";
 import { useNavigate, Link } from "react-router-dom";
 import { YourFormElement } from "./signup";
+import Loading from "../../ui/Loading/Loading";
 const SignUpForm: FC = () => {
   const [signup, { isLoading, data }] = useSignupMutation();
   const navigate = useNavigate();
@@ -26,7 +27,7 @@ const SignUpForm: FC = () => {
   }, [data, navigate]);
 
   if (isLoading) {
-    return <h1>oleg</h1>;
+    return <Loading>Loading...</Loading>;
   }
   return (
     <div className={styles.signUpForm}>

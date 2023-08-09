@@ -6,15 +6,16 @@ import Button from "../../ui/Button/Button";
 import ModalWrapper from "../modalWrapper/ModalWrapper";
 import { addHostName } from "../../helpFunctions/addHostname";
 import { useDispatch } from "react-redux";
-import { hideEditModal, updateprofile } from "../../store/modal/modalSlice";
+import { hideEditModal } from "../../store/modal/modalSlice";
 import { useFoto } from "../../hooks/useFoto/useFoto";
 import AddBlog from "../AddBlog/AddBlog";
 import Avatar from "../../ui/Avatar/Avatar";
 import { useUpdateProfileMutation } from "../../services/user";
 import Input from "../../ui/Input/Input";
+import Loading from "../../ui/Loading/Loading";
 const EditProfile = () => {
   const dispatch = useDispatch();
-  const { isEditModal, editModal } = useAppSelector(state => state.modal);
+  const { isEditModal } = useAppSelector(state => state.modal);
   const {
     avatar_url,
     back_url,
@@ -22,8 +23,9 @@ const EditProfile = () => {
     name: defaultName,
   } = useAppSelector(state => state.auth.user!);
   const { policy, signature } = useAppSelector(state => state.auth);
-  const [update] = useUpdateProfileMutation();
-  const { name, description } = editModal!;
+  const [update, { isLoading }] = useUpdateProfileMutation();
+  const [name, setName] = useState(defaultName);
+  const [description, setDescription] = useState(defaultDesc);
   const [avatar, setAva] = useState<File>();
   const [back, setBack] = useState<File>();
 
@@ -31,6 +33,7 @@ const EditProfile = () => {
   const [backPicture] = useFoto(back!);
 
   const [descShow, setdescShow] = useState(false);
+  const [nameShow, setNameShow] = useState(false);
 
   const Submit = async (e: any) => {
     const form = new FormData();
@@ -122,9 +125,7 @@ const EditProfile = () => {
               {descShow ? (
                 <textarea
                   value={description}
-                  onChange={e =>
-                    dispatch(updateprofile({ description: e.target.value }))
-                  }
+                  onChange={e => setDescription(e.target.value)}
                   rows={3}
                   className={styles.desc_textarea}
                   placeholder={`${
@@ -138,29 +139,24 @@ const EditProfile = () => {
               )}
             </div>
           </div>
-          <Button variant='Orange' type='submit'>
-            save
-          </Button>
           <div>
             <div className={styles.block}>
               <div>name</div>
               <AddBlog
                 id='name'
                 type='text'
-                onClickShow={() => setdescShow(prev => !prev)}
+                onClickShow={() => setNameShow(prev => !prev)}
               >
-                <div>{descShow ? "Cancel" : "Add"}</div>
+                <div>{nameShow ? "Cancel" : "Add"}</div>
               </AddBlog>
             </div>
             <div style={{ display: "flex", justifyContent: "center" }}>
-              {descShow ? (
+              {nameShow ? (
                 <Input
                   border='BorderOrange'
                   variant='Gray'
                   value={name}
-                  onChange={e =>
-                    dispatch(updateprofile({ name: e.target.value }))
-                  }
+                  onChange={e => setName(e.target.value)}
                   placeholder={`${
                     defaultName ? defaultName : "Describe yourself..."
                   } `}
@@ -172,7 +168,11 @@ const EditProfile = () => {
               )}
             </div>
           </div>
+          <Button disabled={isLoading} variant='Orange' type='submit'>
+            save
+          </Button>
         </form>
+        {isLoading && <Loading>loading...</Loading>}
       </div>
     </ModalWrapper>
   );

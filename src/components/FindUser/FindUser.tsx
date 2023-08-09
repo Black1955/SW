@@ -12,7 +12,7 @@ interface oleg {
 const FindUser = () => {
   const [value, setValue] = useState<string>("");
   const [data, setData] = useState<oleg[]>();
-  const debounceValue = useDebounce(value, 400);
+  const debounceValue = useDebounce(value, 300);
   const findUser = async (value: string) => {
     await fetch(`${process.env.REACT_APP_URL}/search?query=${value}`, {
       headers: {
