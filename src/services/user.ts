@@ -33,9 +33,10 @@ export const userAPI = apiWithTag.injectEndpoints({
       query: () => "/refresh",
     }),
     getUser: build.query({
-      query: arg => ({
-        url: `/getuser/${arg}`,
+      query: id => ({
+        url: `/getuser/${id}`,
       }),
+
       providesTags: ["user"],
     }),
     recomendUser: build.query<IReCommended[], number | string | undefined>({

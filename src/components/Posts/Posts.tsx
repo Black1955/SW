@@ -5,7 +5,7 @@ import styles from "./Posts.module.scss";
 import Post from "../Post/Post";
 import {
   useDisLikePostMutation,
-  useGetPostsQuery,
+  useLazyGetPostsQuery,
   useLikePostMutation,
 } from "../../services/post";
 import { addHostName } from "../../helpFunctions/addHostname";
@@ -49,18 +49,29 @@ const Posts: FC<IPosts> = ({ tabs, id }) => {
   useEffect(() => {
     setPost([]);
     setPage(0);
+    getPost({
+      id,
+      limit: "5",
+      page: 0,
+      type: valueTab,
+    });
   }, [valueTab, id]);
-  const { data: posts, isLoading } = useGetPostsQuery({
-    id,
-    limit: "5",
-    page: page,
-    type: valueTab,
-  });
+  const [getPost, { data: posts, isLoading }] = useLazyGetPostsQuery();
   const [ref, isVisible] = useOnScreen(isLoading);
-
   useEffect(() => {
-    if (post && isVisible) {
-      setPage(last => (last += posts?.length!));
+    if (page !== 0) {
+      getPost({
+        id,
+        limit: "5",
+        page: page,
+        type: valueTab,
+      });
+    }
+  }, [page]);
+  useEffect(() => {
+    console.log(isVisible);
+    if (post.length && isVisible) {
+      setPage(last => (last += posts?.length || 0));
     }
   }, [isVisible]);
 

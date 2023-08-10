@@ -8,11 +8,12 @@ import { useDispatch } from "react-redux";
 import { hidePhotoModal } from "../../store/modal/modalSlice";
 import { useAppSelector } from "../../hooks/useAppSelect/useAppSelector";
 import styles from "./UploadPhoto.module.scss";
+import Loading from "../../ui/Loading/Loading";
 const UploadPhoto: FC<IUpload> = ({ file, type }) => {
   const { isPhotoModal: visible } = useAppSelector(state => state.modal);
   const dispatch = useDispatch();
   const [photo] = useFoto(file);
-  const [update] = useUpdatePhotoMutation();
+  const [update, { isLoading }] = useUpdatePhotoMutation();
 
   const submit = async (e: FormEvent<HTMLFormElement>) => {
     const data = new FormData();
@@ -57,6 +58,7 @@ const UploadPhoto: FC<IUpload> = ({ file, type }) => {
             </Button>
           </div>
         </form>
+        {isLoading && <Loading>loading...</Loading>}
       </div>
     </ModalWrapper>
   );
