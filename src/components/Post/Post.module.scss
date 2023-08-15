@@ -44,7 +44,9 @@ button {
   -webkit-box-shadow: 5px 9px 16px 3px rgba(191, 191, 191, 1);
   -moz-box-shadow: 5px 9px 16px 3px rgba(191, 191, 191, 1);
   box-shadow: 5px 9px 16px 3px rgba(191, 191, 191, 1);
-  margin: 20px 10px;
+  margin: 20px 0px;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .img {

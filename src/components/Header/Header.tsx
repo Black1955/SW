@@ -1,4 +1,3 @@
-import logo from "../../assets/logo.png";
 import styles from "./Header.module.scss";
 import Nav from "../Nav/Nav";
 import FindUser from "../FindUser/FindUser";
@@ -10,16 +9,10 @@ const Header = () => {
         <div className={styles.header}>
           <Link to='/'>
             <div className={styles.logo}>
-              <img
-                src={logo}
-                className={styles.logoSvg}
-                alt='logo'
-                width='150px'
-                height='50px'
-              />
+              <div className={styles.logoSvg}></div>
             </div>
           </Link>
-          <div>
+          <div className={styles.finduserWrapper}>
             <FindUser />
           </div>
           <div className={styles.nav}>

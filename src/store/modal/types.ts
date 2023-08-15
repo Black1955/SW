@@ -9,4 +9,5 @@ export interface IModal {
   fotoModal: FotoModal | null;
   isPhotoModal: boolean;
   IsPostModal: boolean;
+  isSideBar:boolean
 }

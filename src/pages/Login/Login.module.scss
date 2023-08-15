@@ -3,6 +3,7 @@
 .content {
   height: 100vh;
   display: flex;
+  width: 100%;
   align-items: center;
   justify-content: center;
   background: url("../../assets/bg.jpg");
@@ -15,24 +16,35 @@
   height: 700px;
   background: #e1e1e1;
   opacity: 0.95;
+  @media screen and (max-width: 787px) {
+    width: 100%;
+  }
+  display: flex;
+  justify-content: center;
 }
 .wrapper {
-  padding: 30px 20px;
+  margin: 30px 20px;
   h3 {
     padding: 0;
     margin: 0;
     margin-bottom: 10px;
   }
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .inputEmail {
   font-size: 14px;
   color: rgb(32, 32, 32);
   margin-bottom: 20px;
+  width: 100%;
 }
 .inputPassword {
   font-size: 14px;
   color: rgb(32, 32, 32);
   margin-bottom: 6px;
+  width: 100%;
 }
 
 .logo {
@@ -64,7 +76,7 @@
 
 .formBtn {
   margin-top: 30px;
-  width: 420px;
+  width: 100%;
   background-color: $YELLOW-ORANGE;
   font-size: 15px;
   font-weight: 700;

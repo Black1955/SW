@@ -1,18 +1,20 @@
 import { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
-import LinksBar from "../LinksBar/LinksBar";
 import Header from "../Header/Header";
 import styles from "./Layout.module.scss";
 import { useLazyRefreshQuery } from "../../services/user";
+import LinkBarWrapper from "../LinkbarWrapper/LinkBarWrapper";
 const Layout = () => {
   const navigate = useNavigate();
   const [request, { isLoading, data, error, isFetching }] =
     useLazyRefreshQuery();
+
   useEffect(() => {
     if (localStorage.getItem("token")) {
       request({});
     }
   }, [request]);
+
   useEffect(() => {
     //@ts-ignore
     if (error || !localStorage.getItem("token")) {
@@ -20,7 +22,6 @@ const Layout = () => {
       navigate("/signin");
     }
   }, [error, navigate]);
-
   if (isLoading && isFetching) {
     return <h1>Loading...</h1>;
   }
@@ -35,11 +36,7 @@ const Layout = () => {
           <div className={styles.container}>
             <div className={styles.wrapper}>
               <div className={styles.main}>
-                <div>
-                  <div className={styles.bar}>
-                    <LinksBar />
-                  </div>
-                </div>
+                <LinkBarWrapper />
                 <div className={styles.outlet}>
                   <Outlet />
                 </div>

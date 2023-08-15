@@ -1,15 +1,21 @@
 @import "../../assets/variables.module.scss";
 
-.input {
-  background: white;
-  width: 320px;
+.inputContainer {
+  width: 250px;
   height: 30px;
   padding: 7px;
-  padding-left: 34px;
-  border: none;
-  outline: none;
+  background: white;
   border-radius: 6px;
   border: 1px solid rgb(206, 206, 206);
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  background: white;
+  border: none;
+  outline: none;
 }
 .input::placeholder {
   color: rgb(194, 194, 194);
@@ -22,56 +28,47 @@
   top: 15px;
   left: 5px;
 }
-.inputBlock {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
+
 .searchIcon {
   width: 15px;
   height: 17px;
 }
 .input:focus {
-  border: 1.5px solid $PALE_ORANGE;
+  .inputContainer {
+    border: 1.5px solid $PALE_ORANGE;
+  }
 }
 
 @media screen and (max-width: 880px) {
-  .input {
+  .inputContainer {
     width: 215px;
-  }
-  .searchIcon {
-    margin-top: -15px;
-    width: 13px;
-    height: 15px;
   }
 }
 
 .inputHidden {
   width: 40px;
   height: 40px;
-  border-radius: 50%;
+  border-radius: 6px;
   background-color: $LIGHT_GRAY;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  .input {
-    display: none;
-  }
+  display: none;
+  border: none;
+}
+.oleg {
+  display: none;
 }
 
-// @media (max-width: 720px) {
-//   .inputBlock {
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-//     width: 40px;
-//     height: 40px;
-//     border-radius: 50%;
-//     background-color: $LIGHT_GRAY;
-//     cursor: pointer;
-//   }
-//   .input {
-//     display: none;
-//   }
-// }
+@media screen and (max-width: 767px) {
+  .inputContainer {
+    display: none;
+  }
+  .inputHidden {
+    display: block;
+  }
+  .oleg {
+    display: block;
+  }
+}

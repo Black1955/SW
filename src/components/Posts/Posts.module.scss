@@ -2,7 +2,11 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
   grid-column-gap: 20px;
+  @media screen and (max-width: 590px) {
+    grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+  }
 }
+
 .tabs {
   width: 90%;
   margin-right: 20px;

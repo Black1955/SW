@@ -1,0 +1,19 @@
+.bar {
+  margin-top: 20px;
+  margin-right: 60px;
+  position: sticky;
+  top: 95px;
+}
+
+@media screen and (max-width: 787px) {
+  .barWrapper {
+    display: none;
+  }
+  .active {
+    display: block;
+    position: absolute !important;
+    z-index: 100;
+    background-color: #fff;
+    left: 0;
+  }
+}

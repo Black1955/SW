@@ -52,7 +52,7 @@ const Profile: FC = () => {
       {(isFetching || isLoading) && <Skeleton />}
       <div className={styles.content}>
         <Posts tabs={tabs} id={id} />
-        <div style={{ width: "400px" }}>
+        <div className={styles.profileList}>
           <ProfileList profiles={profiles} title='Recomend for you' />
         </div>
       </div>

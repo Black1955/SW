@@ -6,32 +6,52 @@
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 80px;
-
     @media (max-width: 1000px) {
       padding: 0 40px;
+    }
+    @media (max-width: 550px) {
+      padding: 0 20px;
+    }
+    @media (max-width: 370px) {
+      padding: 0 5px;
     }
     .header {
       display: flex;
       padding: 10px 0;
       align-items: center;
+      position: relative;
     }
   }
+}
 
-  .logo {
-    margin-right: 35px;
-  }
+.finduserWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  margin-right: 35px;
 }
 .nav {
   display: flex;
   align-items: center;
   margin-left: auto;
 }
+
+.logoSvg {
+  background-image: url("../../assets/logo.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 150px;
+  height: 50px;
+}
+
 @media screen and (max-width: 980px) {
-  .logo {
-    img {
-      width: 100px;
-      height: 35px;
-    }
+  .logoSvg {
+    width: 100px;
+    height: 35px;
   }
 }
 @media screen and (max-width: 720px) {
@@ -49,9 +69,24 @@
     height: 20px;
   }
 }
-@media screen and (max-width: 385px) {
-  .logo img {
-    width: 72px;
-    height: 30px;
+
+@media screen and (max-width: 470px) {
+  .logo {
+    margin-right: 10px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .logoSvg {
+    background-image: url("../../assets/logo_small.png");
+    width: 50px;
+  }
+  .logo {
+    margin-right: 5px;
+  }
+}
+@media screen and (max-width: 370px) {
+  .logoSvg {
+    width: 20px;
   }
 }

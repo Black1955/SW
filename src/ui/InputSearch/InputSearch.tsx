@@ -1,51 +1,39 @@
 import styles from "./InputSearch.module.scss";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FC } from "react";
 import { IInputSearch } from "./IInputSearch";
 import { BsSearch } from "react-icons/bs";
-
+import { RxCross2 } from "react-icons/rx";
 const InputSearch: FC<IInputSearch> = ({ ...rest }) => {
-  const [isInputVisible, setIsInputVisible] = useState(true);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [showInput, setShowInput] = useState(
+    window.innerWidth < 720 ? false : true
+  );
 
-  useEffect(() => {
-    const handleResize = () => {
-      const width = window.innerWidth;
-      setWindowWidth(width);
-      if (width <= 720) {
-        setIsInputVisible(false);
-      } else {
-        setIsInputVisible(true);
-      }
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  const toggleInput = () => {
-    setIsInputVisible(true);
-  };
-  const handleClick = () => {
-    if (windowWidth > 720) {
-      return;
-    }
-    toggleInput();
-  };
   return (
-    <div
-      className={`${styles.inputBlock} ${
-        isInputVisible ? styles.inputVisible : styles.inputHidden
-      }`}
-      onClick={handleClick}
-    >
-      <button className={styles.button}>
-        <BsSearch style={{ color: "orange" }} className={styles.searchIcon} />
-      </button>
-      <input type='text' className={styles.input} {...rest} />
-    </div>
+    <>
+      {showInput ? (
+        <div className={styles.inputContainer} style={{ display: "flex" }}>
+          <input type='text' className={styles.input} {...rest} />
+          {showInput && (
+            <div
+              className={styles.oleg}
+              onClick={() => setShowInput(prev => !prev)}
+            >
+              <RxCross2 />
+            </div>
+          )}
+        </div>
+      ) : (
+        <button
+          className={styles.inputHidden}
+          onClick={() => {
+            setShowInput(prev => !prev);
+          }}
+        >
+          <BsSearch className={styles.searchIcon} />
+        </button>
+      )}
+    </>
   );
 };
 

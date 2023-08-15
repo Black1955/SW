@@ -69,7 +69,6 @@ const Posts: FC<IPosts> = ({ tabs, id }) => {
     }
   }, [page]);
   useEffect(() => {
-    console.log(isVisible);
     if (post.length && isVisible) {
       setPage(last => (last += posts?.length || 0));
     }

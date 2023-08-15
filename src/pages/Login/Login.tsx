@@ -49,6 +49,7 @@ const Login: FC<ILogin> = () => {
                 variant='Gray'
                 border='BorderWhite'
                 placeholder='Email'
+                style={{ width: "100%" }}
               />
             </div>
 
@@ -61,15 +62,11 @@ const Login: FC<ILogin> = () => {
                 id='password'
                 border='BorderWhite'
                 placeholder='Password'
+                style={{ width: "100%" }}
               />
             </div>
 
             <span className={styles.minimum}>Minimum 6 characters</span>
-            <p className={styles.paragraf}>
-              By clicking Agree & Join, you agree to the Flothy's{" "}
-              <span>User Agreement</span> <span>Privacy Policy</span> and{" "}
-              <span>Cookie Policy</span>{" "}
-            </p>
             <button className={styles.formBtn} type='submit'>
               Agree & Join{" "}
             </button>

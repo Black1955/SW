@@ -43,6 +43,7 @@ const SignUpForm: FC = () => {
               variant='Gray'
               border='BorderWhite'
               placeholder='Name'
+              style={{ width: "100%" }}
             />
           </div>
           <div className={styles.inputEmail}>
@@ -52,6 +53,7 @@ const SignUpForm: FC = () => {
               id='email'
               border='BorderWhite'
               placeholder='Email'
+              style={{ width: "100%" }}
             />
           </div>
 
@@ -61,15 +63,11 @@ const SignUpForm: FC = () => {
               id='password'
               border='BorderWhite'
               placeholder='Password'
+              style={{ width: "100%" }}
             />
           </div>
 
           <span className={styles.minimum}>Minimum 6 characters</span>
-          <p className={styles.paragraf}>
-            By clicking Agree & Join, you agree to the Flothy's{" "}
-            <span>User Agreement</span> <span>Privacy Policy</span> and{" "}
-            <span>Cookie Policy</span>{" "}
-          </p>
           <button className={styles.formBtn}>Agree & Join </button>
           <p className={styles.signUp}>
             Already on Fluffy's?{" "}

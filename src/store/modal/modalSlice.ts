@@ -8,6 +8,7 @@ const initialState: IModal = {
   isCreatePostModal: false,
   fotoModal: null,
   IsPostModal: false,
+  isSideBar: false,
 };
 
 export const ModalSlice = createSlice({
@@ -41,6 +42,9 @@ export const ModalSlice = createSlice({
     PhotoModal(state, payload: PayloadAction<boolean>) {
       state.IsPostModal = payload.payload;
     },
+    SideBar(state, payload: PayloadAction<boolean>) {
+      state.isSideBar = payload.payload;
+    },
   },
 });
 
@@ -54,4 +58,5 @@ export const {
   hidePhotoModal,
   showPhotoModal,
   PhotoModal,
+  SideBar,
 } = ModalSlice.actions;
