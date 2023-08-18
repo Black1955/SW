@@ -28,7 +28,6 @@ const Post: FC<IPost> = ({
         <div className={styles.wrapper}>
           <div className={styles.left}>
             <p>{title}</p>
-
             {folowed ? null : (
               <button className={styles.folowed}>Follow</button>
             )}

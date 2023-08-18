@@ -68,7 +68,6 @@ const CreatePost: FC<ICreatePost> = ({ file }) => {
             >
               <div>Create Post</div>
             </div>
-
             <Input
               style={{ marginBottom: "10px", fontSize: "20px" }}
               border='BorderWhite'
@@ -77,7 +76,6 @@ const CreatePost: FC<ICreatePost> = ({ file }) => {
               value={title}
               onChange={e => setTitle(e.target.value)}
             />
-
             <div>
               <textarea
                 className={styles.textarea}
@@ -113,7 +111,6 @@ const CreatePost: FC<ICreatePost> = ({ file }) => {
                 </AddBlog>
               )}
             </div>
-
             <Button
               disabled={title ? false : true}
               type='submit'
