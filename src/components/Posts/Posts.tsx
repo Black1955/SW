@@ -8,14 +8,11 @@ import {
   useLazyGetPostsQuery,
   useLikePostMutation,
 } from "../../services/post";
-import { addHostName } from "../../helpFunctions/addHostname";
-import { useAppSelector } from "../../hooks/useAppSelect/useAppSelector";
 import { IPost } from "../Post/IPost";
 import useOnScreen from "../../hooks/usePagination";
 import Skeleton from "../Post/Skeleton";
 const Posts: FC<IPosts> = ({ tabs, id }) => {
   const [post, setPost] = useState<IPost[]>([]);
-  const { policy, signature } = useAppSelector(state => state.auth);
   const [valueTab, setValueTab] = useState<string>(tabs[0].value);
   const [page, setPage] = useState(0);
   const [like] = useLikePostMutation();
@@ -105,7 +102,7 @@ const Posts: FC<IPosts> = ({ tabs, id }) => {
               coments={post.coments}
               description={post.description}
               folowed={post.folowed}
-              img_url={addHostName(post.img_url, policy!, signature!)}
+              img_url={post.img_url}
               liked={post.liked}
               likes={post.likes}
               title={post.title}
@@ -113,6 +110,7 @@ const Posts: FC<IPosts> = ({ tabs, id }) => {
               key={post.id}
               userId={post.userId}
               setLiked={() => handleLike(post.id, post.liked)}
+              nickname={post.nickname}
             />
           ))}
       </div>

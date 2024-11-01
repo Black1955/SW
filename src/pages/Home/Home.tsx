@@ -5,12 +5,10 @@ import styles from "./Home.module.scss";
 import Posts from "../../components/Posts/Posts";
 import Post from "../../components/Post/Post";
 import { useAppSelector } from "../../hooks/useAppSelect/useAppSelector";
-import { addHostName } from "../../helpFunctions/addHostname";
 import { useRecomendUserQuery } from "../../services/user";
 import ProfileList from "../../components/ProfileList/ProfileList";
 const Home: FC = () => {
   const { avatar_url, id } = useAppSelector(state => state.auth.user!);
-  const { policy, signature } = useAppSelector(state => state.auth);
   const { data, isLoading } = useRecomendUserQuery(id);
   const tabs = [
     {
@@ -38,12 +36,7 @@ const Home: FC = () => {
       <div className={styles.left}>
         <div className={styles.blockAdd}>
           <div className={styles.mr}>
-            <Avatar
-              width={70}
-              height={70}
-              url={addHostName(avatar_url, policy!, signature!)}
-              userId={id}
-            />
+            <Avatar width={70} height={70} url={avatar_url} userId={id} />
           </div>
           <AddBlogList />
         </div>
@@ -71,6 +64,7 @@ const Home: FC = () => {
               folowed={false}
               coments={[]}
               userId={3}
+              nickname='user'
             />
           </div>
         </div>

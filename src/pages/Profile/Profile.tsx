@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import Posts from "../../components/Posts/Posts";
 import ProfileList from "../../components/ProfileList/ProfileList";
 import ProfileBlock from "../../components/Profile/ProfileBlock";
@@ -13,6 +13,9 @@ const Profile: FC = () => {
   const { id } = useParams();
   const { data, isFetching, isLoading, error } = useGetUserQuery(id);
   const { data: profiles } = useRecomendUserQuery(myId);
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
   const tabs = [
     {
       text: "blog",

@@ -15,4 +15,5 @@ export interface IPost {
   setFolowed?(): void;
   userId: number;
   coments: IComment[];
+  nickname: string;
 }

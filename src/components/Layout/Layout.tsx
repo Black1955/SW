@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import Header from "../Header/Header";
 import styles from "./Layout.module.scss";
-import { useLazyRefreshQuery } from "../../services/user";
+import { useLazyRefreshQuery } from "../../services/auth";
 import LinkBarWrapper from "../LinkbarWrapper/LinkBarWrapper";
 const Layout = () => {
   const navigate = useNavigate();
@@ -14,7 +14,6 @@ const Layout = () => {
       request({});
     }
   }, [request]);
-
   useEffect(() => {
     //@ts-ignore
     if (error || !localStorage.getItem("token")) {

@@ -6,26 +6,26 @@ export const userAPI = API.injectEndpoints({
   endpoints: build => ({
     getPosts: build.query<IPost[], IrecomendPosts>({
       query: ({ id, limit, page, type }) => ({
-        url: `/posts/recomendposts/${id}?limit=${limit}&page=${page}&type=${type}`,
+        url: `/post/recomendposts/${id}?limit=${limit}&page=${page}&type=${type}`,
       }),
     }),
     likePost: build.mutation<likeres, likeBody>({
       query: body => ({
-        url: "/posts/like",
+        url: "/post/like",
         method: "POST",
         body: body,
       }),
     }),
     disLikePost: build.mutation<likeres, likeBody>({
       query: body => ({
-        url: "/posts/dislike",
+        url: "/post/dislike",
         method: "POST",
         body: body,
       }),
     }),
     createPost: build.mutation({
       query: body => ({
-        url: "/posts/create",
+        url: "/post/create",
         method: "POST",
         body: body,
       }),

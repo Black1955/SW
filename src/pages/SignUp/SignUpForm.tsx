@@ -3,7 +3,7 @@ import { FC, useEffect } from "react";
 import logo from "../../assets/logo.png";
 import InputPassword from "../../ui/InputPassword/InputPassword";
 import Input from "../../ui/Input/Input";
-import { useSignupMutation } from "../../services/user";
+import { useSignupMutation } from "../../services/auth";
 import { useNavigate, Link } from "react-router-dom";
 import { YourFormElement } from "./signup";
 import Loading from "../../ui/Loading/Loading";

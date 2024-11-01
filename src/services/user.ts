@@ -15,28 +15,12 @@ const apiWithTag = API.enhanceEndpoints({ addTagTypes: ["user"] });
 
 export const userAPI = apiWithTag.injectEndpoints({
   endpoints: build => ({
-    signin: build.mutation<res, query>({
-      query: args => ({
-        url: "signin",
-        method: "POST",
-        body: args,
-      }),
-    }),
-    signup: build.mutation<res, query1>({
-      query: args => ({
-        url: "/signup",
-        method: "POST",
-        body: args,
-      }),
-    }),
-    refresh: build.query<IRefreshUser, Error>({
-      query: () => "/refresh",
-    }),
     getUser: build.query({
       query: id => ({
         url: `/getuser/${id}`,
       }),
-
+      //@ts-ignore
+      transformResponse: res => res.user,
       providesTags: ["user"],
     }),
     recomendUser: build.query<IReCommended[], number | string | undefined>({
@@ -83,15 +67,11 @@ export const userAPI = apiWithTag.injectEndpoints({
   }),
 });
 export const {
-  useSigninMutation,
-  useSignupMutation,
   useGetUserQuery,
-  useRefreshQuery,
   useRecomendUserQuery,
   useSubscribeMutation,
   useUnSubscribeMutation,
   useFindUserQuery,
   useUpdateProfileMutation,
   useUpdatePhotoMutation,
-  useLazyRefreshQuery,
 } = userAPI;

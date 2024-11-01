@@ -21,17 +21,19 @@ const Post: FC<IPost> = ({
   img_url,
   liked,
   userId,
+  nickname,
 }) => {
   return (
     <div className={styles.post}>
       <header className={styles.header}>
         <div className={styles.wrapper}>
           <div className={styles.left}>
-            <p>{title}</p>
+            <div>{nickname}</div>
             {folowed ? null : (
               <button className={styles.folowed}>Follow</button>
             )}
           </div>
+          <p>{title}</p>
           <div className={styles.right}>
             <p>{getDate(time)}</p>
             <button className={styles.headerButton}>

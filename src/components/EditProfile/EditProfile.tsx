@@ -4,7 +4,6 @@ import styles from "./EditProfile.module.scss";
 import { GrClose } from "react-icons/gr";
 import Button from "../../ui/Button/Button";
 import ModalWrapper from "../modalWrapper/ModalWrapper";
-import { addHostName } from "../../helpFunctions/addHostname";
 import { useDispatch } from "react-redux";
 import { hideEditModal } from "../../store/modal/modalSlice";
 import { useFoto } from "../../hooks/useFoto/useFoto";
@@ -22,7 +21,6 @@ const EditProfile = () => {
     description: defaultDesc,
     name: defaultName,
   } = useAppSelector(state => state.auth.user!);
-  const { policy, signature } = useAppSelector(state => state.auth);
   const [update, { isLoading }] = useUpdateProfileMutation();
   const [name, setName] = useState(defaultName);
   const [description, setDescription] = useState(defaultDesc);
@@ -77,11 +75,7 @@ const EditProfile = () => {
               <Avatar
                 height={168}
                 width={168}
-                url={
-                  avatarPicture
-                    ? avatarPicture.toString()
-                    : addHostName(avatar_url, policy!, signature!)
-                }
+                url={avatarPicture ? avatarPicture.toString() : avatar_url}
                 userId={10}
               />
             </div>
@@ -100,11 +94,7 @@ const EditProfile = () => {
             <div style={{ display: "flex", justifyContent: "center" }}>
               <div className={styles.back_picture}>
                 <img
-                  src={
-                    backPicture
-                      ? backPicture.toString()
-                      : addHostName(back_url, policy!, signature!)
-                  }
+                  src={backPicture ? backPicture.toString() : back_url}
                   alt='qwe'
                 />
               </div>

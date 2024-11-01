@@ -5,7 +5,7 @@ import logo from "../../assets/logo.png";
 import InputPassword from "../../ui/InputPassword/InputPassword";
 import Input from "../../ui/Input/Input";
 import { useNavigate, Link } from "react-router-dom";
-import { useSigninMutation } from "../../services/user";
+import { useSigninMutation } from "../../services/auth";
 import Loading from "../../ui/Loading/Loading";
 const Login: FC<ILogin> = () => {
   const navigation = useNavigate();

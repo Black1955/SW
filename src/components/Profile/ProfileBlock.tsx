@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { IProfile } from "./IProfileBlock";
 import styles from "./ProfileBlock.module.scss";
 import Button from "../../ui/Button/Button";
@@ -6,7 +6,6 @@ import { TbSettings } from "react-icons/tb";
 import PetList from "../PetsList/PetList";
 import "dotenv";
 import Avatar from "../../ui/Avatar/Avatar";
-import { addHostName } from "../../helpFunctions/addHostname";
 import AddBlog from "../AddBlog/AddBlog";
 import { useAppSelector } from "../../hooks/useAppSelect/useAppSelector";
 import ButtonStyles from "../../ui/Button/Button.module.scss";
@@ -32,7 +31,7 @@ const ProfileBlock: FC<IProfile> = ({
 }) => {
   const dispatch = useDispatch();
   const [isShow, setShow] = useState<boolean>(false);
-  const { policy, signature, user } = useAppSelector(state => state.auth);
+  const { user } = useAppSelector(state => state.auth);
   const [subscribe] = useSubscribeMutation();
   const [unSubscribe] = useUnSubscribeMutation();
   const folow = async (followed: boolean) => {
@@ -42,10 +41,7 @@ const ProfileBlock: FC<IProfile> = ({
       await subscribe(id);
     }
   };
-  const back =
-    back_url && back_url.length
-      ? addHostName(back_url, policy!, signature!)
-      : background;
+  const back = back_url && back_url.length ? back_url : background;
 
   const [file, setFile] = useState<File>();
   const ChangeFiles = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -77,12 +73,7 @@ const ProfileBlock: FC<IProfile> = ({
 
       <div className={styles.wrapper}>
         <div className={styles.profilePhoto}>
-          <Avatar
-            url={addHostName(avatar_url, policy!, signature!)}
-            height={100}
-            width={100}
-            userId={id}
-          />
+          <Avatar url={avatar_url} height={100} width={100} userId={id} />
         </div>
 
         <div className={styles.information}>
